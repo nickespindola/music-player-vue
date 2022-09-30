@@ -1,32 +1,63 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <TheHeader></TheHeader>
+    <transition mode="out-in">
+      <router-view />
+    </transition>
+    <TheFooter></TheFooter>
   </div>
 </template>
 
+<script>
+import TheHeader from "./components/TheHeader.vue";
+import TheFooter from "./components/TheFooter.vue";
+export default {
+  components: {
+    TheHeader,
+    TheFooter,
+  },
+};
+</script>
+
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  box-sizing: border-box;
+  background: #1c1c1c;
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+ul,
+li,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: black;
 }
 
-nav {
-  padding: 30px;
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.v-enter,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
